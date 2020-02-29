@@ -46,6 +46,25 @@
             this.tail.next = null;
             //decrement the length of the list to show popped value was removed.
             this.length--
+            //check to see if the length of the list is === 0 if so set the head and tail to null
+            if(this.length === 0){
+                this.head = null
+                this.tail = null
+            }
             return current
         }
     }
+
+    // let list = new SinglyLinkedList()
+
+    // list.push(10)
+    // list.push(20)
+    // list.push(30)
+    // console.log(list.pop())
+    // console.log(list.pop())
+    // console.log(list.pop())
+    // console.log(list.pop())
+    // console.log(list.pop())
+    // list.push(5)
+    // list.push(10)
+    // console.log(list)
