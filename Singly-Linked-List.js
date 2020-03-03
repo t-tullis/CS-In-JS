@@ -53,18 +53,36 @@
             }
             return current
         }
+        shift(){
+            if(!this.head){
+                return undefined
+            }
+            //set current variable to the head of the list
+            let current = this.head;
+            //then set the head of the list to current.next
+            this.head = current.next;
+            //decrement the length of the list by 1
+            this.length--;
+            //set the current.next value of the shifted item to null
+            current.next = null;
+            //check to see if the length of the list is equal to 0 if it is set the head and tail === to null
+            if(this.length === 0){
+                this.head = null;
+                this.tail = null;
+            }
+            return current
+        }
     }
 
-    // let list = new SinglyLinkedList()
+    let list = new SinglyLinkedList()
 
-    // list.push(10)
-    // list.push(20)
-    // list.push(30)
-    // console.log(list.pop())
-    // console.log(list.pop())
-    // console.log(list.pop())
-    // console.log(list.pop())
-    // console.log(list.pop())
-    // list.push(5)
-    // list.push(10)
-    // console.log(list)
+    list.push(10)
+    list.push(20)
+    list.push(30)
+    list.push(40)
+    console.log(list.shift())
+    console.log(list.shift())
+    console.log(list.shift())
+    console.log(list.shift())
+    console.log(list.shift())
+    console.log(list)
