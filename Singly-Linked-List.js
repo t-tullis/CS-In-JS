@@ -72,17 +72,25 @@
             }
             return current
         }
+        unshift(val){
+            let newNode = new Node(val)
+            if(!this.head){
+                this.head = newNode;
+                this.tail = this.head
+            }else{
+                let oldHead = this.head;
+                this.head = newNode;
+                newNode.next = oldHead
+            }
+            this.length++
+            return this
+        }
     }
 
     let list = new SinglyLinkedList()
 
-    list.push(10)
-    list.push(20)
-    list.push(30)
-    list.push(40)
-    console.log(list.shift())
-    console.log(list.shift())
-    console.log(list.shift())
-    console.log(list.shift())
-    console.log(list.shift())
-    console.log(list)
+    // list.push(10)
+    // list.push(20)
+    // list.push(30)
+    // list.push(40)
+    // console.log(list)
