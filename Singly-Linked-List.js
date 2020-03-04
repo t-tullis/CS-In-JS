@@ -85,12 +85,22 @@
             this.length++
             return this
         }
+        get(index){
+            let counter = 0;
+            let current = this.head;
+            while(counter < index){
+                current = current.next;
+                counter++
+            }
+            return current
+        }
     }
 
     let list = new SinglyLinkedList()
 
-    // list.push(10)
-    // list.push(20)
-    // list.push(30)
-    // list.push(40)
-    // console.log(list)
+    list.push(10)
+    list.push(20)
+    list.push(30)
+    list.push(40)
+    console.log(list.get(2))
+    console.log(list)
