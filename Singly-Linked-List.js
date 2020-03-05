@@ -89,10 +89,23 @@
             let counter = 0;
             let current = this.head;
             while(counter < index){
-                current = current.next;
-                counter++
+                if(current.next === null){
+                    return null
+                }else{
+                    current = current.next;
+                    counter++
+                }
             }
             return current
+        }
+        set(val, index){
+            let findNode = this.get(index)
+            if(findNode){
+                findNode.val = val;
+                return true
+            }else{
+                return false
+            }
         }
     }
 
@@ -102,5 +115,6 @@
     list.push(20)
     list.push(30)
     list.push(40)
-    console.log(list.get(2))
+    console.log(list.set(15, 0))
+    console.log(list.set(45, 3))
     console.log(list)
