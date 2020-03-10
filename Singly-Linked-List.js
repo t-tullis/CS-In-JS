@@ -129,6 +129,24 @@
             }
             this.length++
         }
+        remove(index){
+            let findNode = this.get(index)
+            let previousNode = this.get(index - 1)
+            let nextNode = findNode.next
+            if(index < 0 || index > this.length){
+                return false
+            }
+            if(index === this.length - 1){
+                return !!this.pop()
+            }
+            if(index === 0){
+                return !!this.shift()
+            }
+            if(findNode){
+                previousNode.next = nextNode;
+            }
+            this.length--
+        }
     }
 
     let list = new SinglyLinkedList()
@@ -137,10 +155,14 @@
     list.push(20)
     list.push(30)
     list.push(40)
-//Head                         Insert                Tail
-    //10    ->    20    ->    15 ->    30 ->    40 ->    null
-    console.log(list.insert(15,1))
-    console.log(list.insert(50,5))
-    console.log(list.insert(5, 0))
-    console.log(list.get(2))
+    console.log(list.remove(1))
+    // console.log(list.get(3))
     console.log(list)
+    
+    
+    
+    // //Head                         Insert                Tail
+    //     //10    ->    20    ->    15 ->    30 ->    40 ->    null
+    //     console.log(list.insert(15,1))
+    //     console.log(list.insert(50,5))
+    //     console.log(list.insert(5, 0))
