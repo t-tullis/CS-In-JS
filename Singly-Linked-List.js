@@ -130,9 +130,9 @@
             this.length++
         }
         remove(index){
-            let findNode = this.get(index)
+            let removeNode = this.get(index)
             let previousNode = this.get(index - 1)
-            let nextNode = findNode.next
+            let nextNode = removeNode.next
             if(index < 0 || index > this.length){
                 return false
             }
@@ -142,10 +142,12 @@
             if(index === 0){
                 return !!this.shift()
             }
-            if(findNode){
+            if(removeNode){
                 previousNode.next = nextNode;
+                removeNode.next = null;
+                this.length--
+                return removeNode
             }
-            this.length--
         }
     }
 
