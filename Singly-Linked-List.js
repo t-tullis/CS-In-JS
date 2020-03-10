@@ -133,8 +133,8 @@
             let removeNode = this.get(index)
             let previousNode = this.get(index - 1)
             let nextNode = removeNode.next
-            if(index < 0 || index > this.length){
-                return false
+            if(index < 0 || index >= this.length){
+                return undefined
             }
             if(index === this.length - 1){
                 return !!this.pop()
@@ -149,17 +149,44 @@
                 return removeNode
             }
         }
+//Tail                                     Head
+    //40   ->   30   ->  20   ->   10   -> null
+        reverse(){
+            //1. Swap Head and tail
+            let node = this.head;
+            this.head = this.tail;
+            this.tail = node;
+            //2. Set next to undefined and prev variable to null
+            let next;
+            let prev = null;
+            //3. Set counter = 0
+            let counter = 0;
+            while(counter < this.length){
+                next = node.next
+                node.next = prev
+                prev = node;
+                node = next;
+                counter++
+            }
+            return this
+        }
     }
 
     let list = new SinglyLinkedList()
 
+//Head                                      Tail
+    //10    ->    20    ->    30 ->    40 ->    null
+
+//Tail                                     Head
+    //40   ->   30   ->  20   ->   10   -> null
     list.push(10)
     list.push(20)
     list.push(30)
     list.push(40)
-    console.log(list.remove(1))
+    console.log(list.reverse())
+    // console.log(list.remove(1))
     // console.log(list.get(3))
-    console.log(list)
+    // console.log(list)
     
     
     
