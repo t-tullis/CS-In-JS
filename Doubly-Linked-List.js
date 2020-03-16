@@ -91,13 +91,61 @@ class DoublyLinkedList{
         }
         if(index > half){
             current = this.tail;
-            counter = this.length
+            counter = this.length - 1
             while(counter > index){
                 current = current.prev;
                 counter--
             }
         }
         return current;
+    }
+    set(index, val){
+        let foundNode = this.get(index);
+        if(foundNode){
+            foundNode.val = val
+            return true
+        }
+        return false;
+    }
+    insert(index,val){
+        let newNode = new Node(val)
+        let previousNode = this.get(index - 1)
+        let nextNode = this.get(index)
+        if(index < 0 || index > this.length){
+            return null
+        }
+        if(index === this.length){
+            return !!this.push(val)
+        }
+        if(index === 0){
+            return !!this.unshift(val)
+        }
+        if(previousNode){
+            previousNode.next = newNode;
+            newNode.prev = previousNode;
+            newNode.next = nextNode;
+            nextNode.prev = newNode;
+        }
+        this.length++
+    }
+    remove(index){
+        let removedNode = this.get(index)
+        let previousNode = this.get(index - 1)
+        let nextNode = removedNode.next;
+        if(index === this.length - 1){
+            return !!this.pop()
+        }
+        if(index === 0){
+            return !!this.shift()
+        }
+        if(removedNode){
+            previousNode.next = nextNode;
+            nextNode.prev = previousNode;
+            removedNode.prev = null;
+            removedNode.next = null;
+        }
+        this.length--
+        return removedNode
     }
 }
 
@@ -108,6 +156,6 @@ list.push(20)
 list.push(30)
 list.push(40)
 list.push(50)
-list.push(60)
-console.log(list.get(5))
-// console.log(list.head)
+console.log(list.remove(2))
+console.log(list.get(2))
+console.log(list)
